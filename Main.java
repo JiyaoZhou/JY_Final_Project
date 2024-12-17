@@ -12,7 +12,7 @@ public class Main
         while (running) 
         {
             
-            System.out.println("Choose an option: \n1. Add Customer \n2. Add Employee \n3. Add Manager \n4. Add Intern \n5. Promote Intern to Employee \n6. Fire Employee \n7. Record a Deal \n8. View People \n9. Exit");
+            System.out.println("1. Add Customer \n2. Add Employee \n3. Add Manager \n4. Add Intern \n5. Promote Intern to Employee \n6. Fire Employee \n7. Record a Deal \n8. View People");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -65,14 +65,17 @@ public class Main
         scanner.close();
     }
     
-    private static void recordADeal(Scanner scanner, ArrayList<Person> people) {
+    private static void recordADeal(Scanner scanner, ArrayList<Person> people) 
+    {
         System.out.println("Enter Employee/Intern ID to Record a Deal:");
         String empID = scanner.nextLine();
         for (Person person : people) {
-            if (person instanceof Employee && person.getPersonID().equals(empID)) {
+            if (person instanceof Employee && person.getPersonID().equals(empID)) 
+            {
                 ((Employee) person).recordADeal();
                 System.out.println("Deal recorded for " + person.getName());
-                if (person instanceof Intern && ((Intern) person).getNumberOfDeals() >= 5) {
+                if (person instanceof Intern && ((Intern) person).getNumberOfDeals() >= 5) 
+                {
                     System.out.println(person.getName() + " has been promoted!");
                     promoteInternById(empID, people, "None");
                 }
@@ -84,15 +87,19 @@ public class Main
 
 
 
-    private static void updateManagerTeamSize(ArrayList<Person> people, String managerID, int adjustment) {
-        for (Person person : people) {
-            if (person instanceof Manager && person.getPersonID().equals(managerID)) {
+    private static void updateManagerTeamSize(ArrayList<Person> people, String managerID, int adjustment) 
+    {
+        for (Person person : people) 
+        {
+            if (person instanceof Manager && person.getPersonID().equals(managerID)) 
+            {
                 ((Manager) person).setTeamSize(((Manager) person).getTeamSize() + adjustment);
             }
         }
     }
 
-    private static void promoteIntern(Scanner scanner, ArrayList<Person> people) {
+    private static void promoteIntern(Scanner scanner, ArrayList<Person> people) 
+    {
         System.out.println("Enter Intern ID to Promote and Manager ID:");
         String internID = scanner.nextLine();
         String managerID = scanner.nextLine();
@@ -100,10 +107,11 @@ public class Main
     }
 
 
-    private static void fireEmployee(Scanner scanner, ArrayList<Person> people) {
+    private static void fireEmployee(Scanner scanner, ArrayList<Person> people) 
+    {
         System.out.println("Enter Employee ID to Fire:");
         String empID = scanner.nextLine();
-        people.removeIf(person -> person instanceof Employee && person.getPersonID().equals(empID));
+        people.removeIf(person->person instanceof Employee && person.getPersonID().equals(empID));
         System.out.println("Employee fired!");
     }
 
