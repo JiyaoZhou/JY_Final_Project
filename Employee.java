@@ -10,13 +10,25 @@ public class Employee extends Person {
         this.numberOfDeals = 0;
     }
 
-    public String getJobTitle() { return jobTitle; }
-    public String getManagerID() { return managerID; }
-    public int getNumberOfDeals() { return numberOfDeals; }
+    public String getJobTitle() { 
+        return jobTitle; 
+    }
+    public String getManagerID() { 
+        return managerID; 
+    }
+    public int getNumberOfDeals() { 
+        return numberOfDeals; 
+    }
 
-    public void setJobTitle(String jobTitle) { this.jobTitle = jobTitle; }
-    public void setManagerID(String managerID) { this.managerID = managerID; }
-    public void recordADeal() { this.numberOfDeals++; }
+    public void setJobTitle(String jobTitle) { 
+        this.jobTitle = jobTitle; 
+    }
+    public void setManagerID(String managerID) { 
+        this.managerID = managerID; 
+    }
+    public void recordADeal() { 
+        this.numberOfDeals++; 
+    }
 
     @Override
     public String toString() {

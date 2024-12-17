@@ -1,13 +1,17 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
+public class Main 
+{
+    public static void main(String[] args) 
+    {
         ArrayList<Person> people = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
-        while (running) {
+        while (running) 
+        {
+            
             System.out.println("Choose an option: \n1. Add Customer \n2. Add Employee \n3. Add Manager \n4. Add Intern \n5. Promote Intern to Employee \n6. Fire Employee \n7. Record a Deal \n8. View People \n9. Exit");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -95,6 +99,7 @@ public class Main {
         promoteInternById(internID, people, managerID);
     }
 
+
     private static void fireEmployee(Scanner scanner, ArrayList<Person> people) {
         System.out.println("Enter Employee ID to Fire:");
         String empID = scanner.nextLine();
@@ -102,11 +107,14 @@ public class Main {
         System.out.println("Employee fired!");
     }
 
-    private static void promoteInternById(String internID, ArrayList<Person> people, String managerID) {
-        for (Person person : people) {
-            if (person instanceof Intern && person.getPersonID().equals(internID)) {
+    private static void promoteInternById(String internID, ArrayList<Person> people, String managerID) 
+    {
+        for (Person person:people) {
+            if (person instanceof Intern && person.getPersonID().equals(internID)) 
+            {
                 Intern intern = (Intern) person;
                 people.add(new Employee(intern.getPersonID(), intern.getName(), intern.getJobTitle(), managerID));
+                
                 updateManagerTeamSize(people, managerID, 1);
                 people.remove(person);
                 System.out.println("Intern promoted!");
